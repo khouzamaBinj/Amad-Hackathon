@@ -36,16 +36,23 @@
 saudi-phishguard/
 │
 ├── manifest.json           # Chrome extension manifest (v3)
-├── background.js           # Background script for event handling
+├── popup.js           # Background script for event handling
 ├── scanner.js              # URL analysis and phishing detection logic
 ├── popup.html              # Extension popup UI
-├── popup.css               # Styling for popup
+├── styles.css               # Styling for popup
 ├── icon.png                # Extension icon
 │
 ├── backend/
 │   ├── app.py              # Flask API for phishing report intake
-│   ├── database.db         # Local SQLite DB (or use MongoDB/PostgreSQL)
+│   ├── logs.csv        # Local SQLite DB (or use MongoDB/PostgreSQL)
+│   ├── requirements.txt
 │   └── utils/              # Threat intelligence enrichment, sandboxing
+│
+├── dashboard/
+│   └── dashboard.py
+├── docs/
+│   ├── tast_list.md
+│   └── threat_model.md
 │
 └── README.md
 

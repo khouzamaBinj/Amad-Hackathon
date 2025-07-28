@@ -1,4 +1,4 @@
-//This adds interactivity to the popup like letting the user manually report a site.
+// Adds interactivity to the popup for manual reporting
 document.getElementById("report").addEventListener("click", () => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     const currentURL = tabs[0].url;
@@ -11,8 +11,20 @@ document.getElementById("report").addEventListener("click", () => {
         indicator: "manual_report",
         timestamp: new Date().toISOString()
       })
-    });
-
-    document.getElementById("status").innerText = "Reported 🚨";
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("✅ Report sent successfully:", data);
+        document.getElementById("status").innerText = "Reported 🚨";
+      })
+      .catch((error) => {
+        console.error("❌ Error sending report:", error);
+        document.getElementById("status").innerText = "Error reporting ⚠️";
+      });
   });
 });

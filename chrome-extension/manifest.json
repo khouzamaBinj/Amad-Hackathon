@@ -8,9 +8,6 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "background": {
-    "service_worker": "scanner.js"
-  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

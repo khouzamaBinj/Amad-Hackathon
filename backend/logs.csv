@@ -1,0 +1,4 @@
+timestamp,url,method,page_title,browser_id
+2025-07-28 22:00,http://phishy-example.com,form,"Login Page",abc123
+2025-07-28 22:02,http://fake-login.net,input,"Secure Area",xyz456
+2025-07-28 22:05,http://clickme.bad,form,"Win a Prize!",lmn789

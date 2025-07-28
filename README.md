@@ -49,7 +49,10 @@ saudi-phishguard/
 │   └── utils/              # Threat intelligence enrichment, sandboxing
 │
 ├── dashboard/
-│   ├── dashboard.py
+│   └── dashboard.py
+├── docs/
+│   ├── tast_list.md
+│   └── threat_model.md
 │
 └── README.md
 

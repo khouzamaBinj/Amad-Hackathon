@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import csv
 import os
 
 app = Flask(__name__)
+CORS(app)
 LOG_PATH = "backend/logs.csv"
 
 @app.route('/log', methods=['POST'])

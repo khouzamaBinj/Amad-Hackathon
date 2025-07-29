@@ -17,7 +17,7 @@ def log_data():
 
     # Append to CSV safely
     file_exists = os.path.isfile(LOG_PATH)
-    with open(LOG_PATH, mode='a', newline='', encoding='utf-8') as file:
+    with open(LOG_PATH, mode='a', newline='\n', encoding='utf-8') as file:
         writer = csv.DictWriter(file, fieldnames=required_fields)
         if not file_exists:
             writer.writeheader()

@@ -1,5 +1,16 @@
-timestamp,url,method,page_title,browser_id
-2025-07-29 18:45:00,alrahjibank.com,form,Fake Mada Login,sample-browser-123
-2025-07-28 22:00,http://phishy-example.com,form,"Login Page",abc123
-2025-07-28 22:02,http://fake-login.net,input,"Secure Area",xyz456
-2025-07-28 22:05,http://clickme.bad,form,"Win a Prize!",lmn789
+timestamp,url,method,page_title,browser_id,category
+2025-07-25 00:14:56,http://samba.com,input,Login Portal,browser-3390,Banking
+2025-07-25 02:14:56,http://souq.sa,input,Healthcare Login,browser-6926,Ecommerce
+2025-07-25 04:14:56,http://noon.sa,form,Fake Mada Login,browser-6823,Ecommerce
+2025-07-25 06:14:56,http://mohesr.gov.sa,form,Secure Form,browser-1886,Education
+2025-07-25 08:14:56,http://myclinic.sa,form,Secure Form,browser-9155,Health
+2025-07-25 10:14:56,http://absher.sa,input,Account Update,browser-4652,Government
+2025-07-25 12:14:56,http://careplus.sa,form,Login Portal,browser-1225,Health
+2025-07-25 14:14:56,http://samba.com,input,Fake Mada Login,browser-7155,Banking
+2025-07-25 16:14:56,http://mada.sa,input,Account Update,browser-3321,Banking
+2025-07-25 18:14:56,http://moh.gov.sa,input,Gov Form,browser-4914,Health
+2025-07-25 20:14:56,http://alrajhibank.com,input,Payment Gateway,browser-7497,Banking
+2025-07-25 22:14:56,http://tamkeen.sa,form,Secure Form,browser-1125,Education
+2025-07-26 00:14:56,http://careplus.sa,input,Account Update,browser-8762,Health
+2025-07-26 02:14:56,http://riyadh.gov.sa,form,Healthcare Login,browser-5387,Government
+2025-07-26 04:14:56,http://stc.com.sa,form,Payment Gateway,browser-8741,Telecom

@@ -3,13 +3,19 @@ import pandas as pd
 import os
 from datetime import datetime
 from io import BytesIO
+from streamlit_autorefresh import st_autorefresh
 
 # Set up layout
-st.set_page_config(page_title="Phishing Logs Dashboard", layout="wide")
-st.title("🔒 Saudi PhishGuard - Dashboard")
+st.set_page_config(page_title="HoneyWall Dashboard", layout="wide")
+st.title("🔒 HoneyWall – Saudi Phishing Log Dashboard")
+
+st_autorefresh(interval=5000, key="datarefresh")
 
 # Path to CSV
-csv_path = "backend/logs.csv"
+csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "backend", "logs.csv"))
+st.write("📁 Using CSV path:", csv_path)
+
+
 
 # Load and validate data
 try:

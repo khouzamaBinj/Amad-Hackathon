@@ -12,19 +12,18 @@ def log_data():
     data = request.json
     print("📥 Data received:", data)
 
-    # Create CSV if not exists, then write row
+    required_fields = ["timestamp", "url", "indicator"]
+    row = {key: data.get(key, "") for key in required_fields}
+
+    # Append to CSV safely
     file_exists = os.path.isfile(LOG_PATH)
     with open(LOG_PATH, mode='a', newline='', encoding='utf-8') as file:
-        writer = csv.DictWriter(file, fieldnames=["timestamp", "url", "indicator"])
+        writer = csv.DictWriter(file, fieldnames=required_fields)
         if not file_exists:
             writer.writeheader()
-        writer.writerow({
-            "timestamp": data.get("timestamp"),
-            "url": data.get("url"),
-            "indicator": data.get("indicator")
-        })
+        writer.writerow(row)
 
-    return jsonify({"status": "saved"}), 200
+    return jsonify({"status": "logged"}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -33,26 +33,19 @@
 ## 🗂️ Project Structure
 
 ```bash
-saudi-phishguard/
-│
-├── manifest.json           # Chrome extension manifest (v3)
-├── popup.js           # Background script for event handling
-├── scanner.js              # URL analysis and phishing detection logic
-├── popup.html              # Extension popup UI
-├── styles.css               # Styling for popup
-├── icon.png                # Extension icon
-│
-├── backend/
-│   ├── app.py              # Flask API for phishing report intake
-│   ├── logs.csv        # Local SQLite DB (or use MongoDB/PostgreSQL)
-│   ├── requirements.txt
-│   └── utils/              # Threat intelligence enrichment, sandboxing
-│
-├── dashboard/
+Amad-Hackathon/
+├── backend/             # Flask backend server (logging phishing data)
+│   ├── app.py
+│   └── log.csv
+├── chrome-extension/    # Chrome extension for phishing detection
+│   ├── manifest.json
+│   ├── popup.html
+│   ├── popup.js
+│   ├── scanner.js
+│   └── styles.css
+├── dashboard/           # Streamlit dashboard to display phishing logs
 │   └── dashboard.py
-├── docs/
-│   ├── tast_list.md
-│   └── threat_model.md
-│
+├── docs/                # Threat model, notes, task list
+│   ├── threat_model.md
+│   └── task_list.md
 └── README.md
-

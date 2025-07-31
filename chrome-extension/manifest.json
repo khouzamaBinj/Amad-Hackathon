@@ -11,7 +11,14 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["scanner.js"]
+      "js": ["scanner.js"],
+      "type": "module"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["detector.js"],
+      "matches": ["<all_urls>"]
     }
   ]
 }

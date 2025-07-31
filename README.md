@@ -36,6 +36,7 @@
 Amad-Hackathon/
 ├── backend/             # Flask backend server (logging phishing data)
 │   ├── app.py
+│   ├── payload.json      ← sample JSON for curl testing
 │   └── log.csv
 ├── chrome-extension/    # Chrome extension for phishing detection
 │   ├── manifest.json

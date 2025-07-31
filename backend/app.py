@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 CORS(app)
-LOG_PATH = "logs.csv"
+LOG_PATH = "logs.csv"  #changed form backend/logs to logs bc we're already in backend!
 
 @app.route('/log', methods=['POST'])
 def log_data():
@@ -27,5 +27,4 @@ def log_data():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
 

@@ -1,17 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "Phishing Detector",
-  "version": "1.0",
-  "description": "Detects phishing forms and warns users",
-  "permissions": ["scripting", "activeTab", "storage"],
-  "host_permissions": ["<all_urls>"],
-  "action": {
-    "default_popup": "popup.html"
+  "name": "HoneyWall",
+  "version": "2.0",
+  "description": "Detect and report phishing URLs",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "background": {
+    "service_worker": "scanner.js"
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["scanner.js"]
-    }
-  ]
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "128": "icon.png"
+  }
 }

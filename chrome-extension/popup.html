@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>PhishGuard</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <h2>Phishing Scanner</h2>
-    <p>Status: <span id="status">Ready</span></p>
-    <button id="report">🚨 Report Site</button>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HoneyWall Alert</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup-container">
+    <img src="icon.png" alt="HoneyWall Logo" class="logo" />
 
-    <script src="popup.js"></script>
-  </body>
+    <h1 class="title">HoneyWall</h1>
+    <p class="subtitle">Protecting you from phishing threats</p>
+
+    <div id="status" class="status-box">Scanning current site...</div>
+
+    <div class="buttons">
+      <button id="report-manual">Report Suspicious Site</button>
+      <button id="report-sms">Came from SMS</button>
+    </div>
+
+    <footer class="footer">Built for Fintech Security</footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
 </html>

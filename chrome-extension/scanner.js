@@ -1,21 +1,19 @@
-console.log("👀 Phishing scanner is active on this page");
+chrome.runtime.onInstalled.addListener(() => {
+  console.log("HoneyWall Scanner Ready");
+});
 
-window.addEventListener("load", () => {
-  const passwordFields = document.querySelectorAll("input[type='password']");
-  if (passwordFields.length > 0) {
-    console.warn("⚠️ Potential phishing: password field detected");
-
-    // Send phishing report to backend
-    fetch("http://localhost:5000/log", {
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'complete' && tab.url.startsWith("http")) {
+    fetch("http://localhost:5000/predict", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        url: window.location.href,
-        indicator: "password_field_detected",
-        timestamp: new Date().toISOString()
-      })
+      body: JSON.stringify({ url: tab.url })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.prediction === "phishing") {
+        alert("⚠️ Warning: This site may be phishing!");
+      }
     });
-  } else {
-    console.log("✅ No password fields detected on this page");
   }
 });

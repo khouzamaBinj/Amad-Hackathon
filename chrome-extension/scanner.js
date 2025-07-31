@@ -85,6 +85,17 @@ fetch("http://localhost:5000/log", {
     timestamp: new Date().toISOString()
   })
 })
-  .then(response => response.json())
-  .then(data => console.log("✅ Backend response:", data))
-  .catch(error => console.error("❌ Test fetch failed:", error));
+  .then(async response => {
+    const contentType = response.headers.get("content-type");
+
+    if (contentType && contentType.includes("application/json")) {
+      const data = await response.json();
+      console.log("✅ Backend response:", data);
+    } else {
+      const text = await response.text();
+      console.warn("⚠️ Backend returned non-JSON:", text);
+    }
+  })
+  .catch(error => {
+    console.error("❌ Test fetch failed:", error);
+  });

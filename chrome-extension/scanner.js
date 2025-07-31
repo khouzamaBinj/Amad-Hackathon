@@ -1,62 +1,64 @@
-console.log("👀 HoneyWall scanner is active");
+console.log("🔍 Phishing scanner activated");
 
-// -------------------- Password Field Detection --------------------
-function detectPasswordFields() {
-  const passwordFields = document.querySelectorAll("input[type='password']");
-  if (passwordFields.length > 0) {
-    console.warn("⚠️ Password field detected");
+// Helper to extract features from the current page
+function extractPageFeatures() {
+  const url = window.location.href;
+  const hasHttps = url.startsWith("https://");
+  const hasIP = !!url.match(/\b(?:\d{1,3}\.){3}\d{1,3}\b/);
+  const hasSuspiciousWords = /(login|secure|update|verify|account|webscr|signin)/i.test(url);
+  const isMobile = /m\.|\/m\//i.test(url);
+  const length = url.length;
+  const numDots = (url.match(/\./g) || []).length;
+  const passwordDetected = !!document.querySelector('input[type="password"]');
 
-    fetch("http://localhost:5000/log", {
+  const parsed = new URL(url);
+  const domain = parsed.hostname;
+  const path = parsed.pathname;
+
+  return {
+    url,
+    domain,
+    path,
+    contains_https: hasHttps,
+    has_ip: hasIP,
+    has_suspicious_words: hasSuspiciousWords,
+    is_mobile_site: isMobile,
+    length,
+    num_dots: numDots,
+    password_field_detected: passwordDetected,
+    timestamp: new Date().toISOString()
+  };
+}
+
+// Send features to the ML backend
+async function analyzePage() {
+  const features = extractPageFeatures();
+
+  try {
+    const response = await fetch("http://127.0.0.1:5000/ml_score", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(features)
+    });
+
+    const result = await response.json();
+    console.log("🤖 AI Result:", result);
+
+    // Log to /log endpoint
+    await fetch("http://127.0.0.1:5000/log", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        url: window.location.href,
-        indicator: "password_field_detected",
-        timestamp: new Date().toISOString()
+        url: features.url,
+        indicator: result.verdict,
+        timestamp: features.timestamp
       })
     });
 
-    return true;
+  } catch (error) {
+    console.error("❌ AI scoring failed:", error);
   }
-  return false;
 }
 
-// -------------------- Main Detection Flow --------------------
-window.addEventListener("load", async () => {
-  try {
-    // Dynamic import of the detector module
-    const { isSuspicious } = await import(chrome.runtime.getURL("detector.js"));
-    
-    const currentUrl = window.location.href;
-    const detectionResult = isSuspicious(currentUrl);
-    const hasPassword = detectPasswordFields();
-
-    if (detectionResult.suspicious || hasPassword) {
-      const reasons = [...detectionResult.reasons];
-      if (hasPassword) reasons.push("password_field_detected");
-
-      alert(
-        "⚠️ HoneyWall Warning:\nSuspicious activity detected!\n\nReasons:\n- " +
-          reasons.join("\n- ")
-      );
-
-      fetch("http://localhost:5000/log", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          url: currentUrl,
-          indicator: "combined_detection",
-          reasons: reasons,
-          suspicion_score: detectionResult.score + (hasPassword ? 1 : 0),
-          timestamp: new Date().toISOString()
-        })
-      }).catch(err => {
-        console.error("❌ Logging failed:", err);
-      });
-    } else {
-      console.log("✅ HoneyWall: No phishing indicators detected.");
-    }
-  } catch (error) {
-    console.error("❌ Failed to load detector module:", error);
-  }
-});
+// Wait a bit for page content to load, then analyze
+setTimeout(analyzePage, 1000);

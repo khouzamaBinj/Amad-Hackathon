@@ -33,7 +33,31 @@ const phishingKeywords = [
   "signin", "otp", "mada", "stcpay", "alrajhi", "password"
 ];
 
-const sensitiveDomains = ["alinma.com", "alrajhibank.com.sa", "stcpay.com"];
+const sensitiveDomains = [
+  "alinma.com", "alrajhibank.com.sa", "stcpay.com",
+  "alahli.com", "riyadbank.com", "sabb.com", "anb.com.sa",
+  "saib.com.sa", "aljazirabank.com.sa", "bankalbilad.com",
+  "alawwalbank.com", "bankmuscat.com.sa"
+];
+
+const trustedDomains = [
+  "alrajhibank.com.sa",
+  "alahli.com",
+  "alinma.com",
+  "riyadbank.com",
+  "sabb.com",
+  "samba.com",
+  "aljazirabank.com.sa",
+  "bankalbilad.com",
+  "anb.com.sa",
+  "saib.com.sa",
+  "alawwalbank.com",
+  "bankmuscat.com.sa",
+  "stcpay.com.sa",
+  "mada.com.sa",
+  "alfransi.com.sa",
+  "bsf.com.sa"
+];
 
 function domainLooksSuspicious(domain) {
   return legitDomains.some(legit => {
@@ -61,6 +85,15 @@ function isSuspicious(url) {
   const domain = parsed.hostname;
   let score = 0;
   const reasons = [];
+
+  // 🟢 Whitelist check to avoid false positives
+  if (trustedDomains.some(trusted => domain.endsWith(trusted))) {
+    return {
+      suspicious: false,
+      score: 0,
+      reasons: ["trusted_domain"]
+    };
+  }
 
   if (domainLooksSuspicious(domain)) {
     score += 1;

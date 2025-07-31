@@ -1,0 +1,5 @@
+url,label
+http://paypal.security-alert.com,phishing
+https://www.google.com,legitimate
+http://secure-account-update.com,phishing
+https://www.amazon.com,legitimate

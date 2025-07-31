@@ -1,30 +1,30 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import csv
-import os
+import joblib, csv, datetime
+import pandas as pd
 
 app = Flask(__name__)
 CORS(app)
-LOG_PATH = "backend/logs.csv"
+model = joblib.load("model/phishing_model.pkl")
 
-@app.route('/log', methods=['POST'])
-def log_data():
+@app.route("/predict", methods=["POST"])
+def predict():
     data = request.json
-    print("📥 Data received:", data)
+    url_features = extract_features(data['url'])
+    prediction = model.predict([url_features])[0]
+    return jsonify({"prediction": prediction})
 
-    required_fields = ["timestamp", "url", "indicator"]
-    row = {key: data.get(key, "") for key in required_fields}
+@app.route("/report", methods=["POST"])
+def report():
+    data = request.json
+    with open("logs.csv", "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([datetime.datetime.now(), data['url'], data['from_sms']])
+    return "Logged"
 
-    # Append to CSV safely
-    file_exists = os.path.isfile(LOG_PATH)
-    with open(LOG_PATH, mode='a', newline='\n', encoding='utf-8') as file:
-        writer = csv.DictWriter(file, fieldnames=required_fields)
-        if not file_exists:
-            writer.writeheader()
-        writer.writerow(row)
+def extract_features(url):
+    # Simplified placeholder
+    return [len(url), url.count("@"), url.count("-")]
 
-    return jsonify({"status": "logged"}), 200
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
-

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HoneyWall Detector Test</title>
+    <script type="module">
+      import { isSuspicious } from './detector.js';
+
+      const testUrls = [
+        "https://secure-stcpayy.com",
+        "http://alrajhibank.com.sa",
+        "https://stcpay.com.sa",
+        "https://login-alahlli.com",
+        "http://stcpay.com",
+        "https://mada-login-update.com"
+      ];
+
+      for (const url of testUrls) {
+        const result = isSuspicious(url);
+        console.log(`🔍 ${url}`);
+        console.log(`Suspicious: ${result.suspicious}`);
+        console.log(`Score: ${result.score}`);
+        console.log(`Reasons: ${result.reasons.join(", ")}`);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Check the Console for Test Output</h1>
+  </body>
+</html>

@@ -71,3 +71,20 @@ if (
     console.error("❌ Error sending fetch:", err);
   }
 }
+
+// ===================== 🧪 MANUAL TEST =====================
+
+console.log("🧪 Sending test log to backend...");
+
+fetch("http://localhost:5000/log", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    url: "https://test.com/phishy",
+    indicator: "manual_test",
+    timestamp: new Date().toISOString()
+  })
+})
+  .then(response => response.json())
+  .then(data => console.log("✅ Backend response:", data))
+  .catch(error => console.error("❌ Test fetch failed:", error));

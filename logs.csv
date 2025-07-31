@@ -10,3 +10,15 @@ timestamp,url,indicator
 2025-07-31T22:32:40.424Z,https://www.google.com/search?q=http+%5Cwebsite&sca_esv=cdfd0c0176bc6a03&rlz=1C1ONGR_enUS1087US1087&sxsrf=AE3TifNtV-GBXDSgtgrnOVRWgsHzalztJA%3A1754001125397&ei=5e6LaJaHGI6M7NYP76LfkA0&ved=0ahUKEwjWjY-wk-iOAxUOBtsEHW_RF9IQ4dUDCBA&uact=5&oq=http+%5Cwebsite&gs_lp=Egxnd3Mtd2l6LXNlcnAiDWh0dHAgXHdlYnNpdGUyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEcyChAAGLADGNYEGEdIugZQ8ARYuQZwAngAkAEBmAG0AaABtAGqAQMwLjG4AQPIAQD4AQGYAgKgAgmYAwDiAwUSATEgQIgGAZAGCJIHATKgB7oFsgcAuAcAwgcFMC4xLjHIBwY&sclient=gws-wiz-serp,benign
 2025-07-31T22:32:42.705Z,https://www.google.com/search?q=http+website&sca_esv=cdfd0c0176bc6a03&rlz=1C1ONGR_enUS1087US1087&sxsrf=AE3TifO6xQmTrdbWE5jeSRlscRSKYMgJ-w%3A1754001154132&ei=Au-LaKHuB-fkxc8P4762mAQ&ved=0ahUKEwih9-i9k-iOAxVncvEDHWOfDUMQ4dUDCBA&uact=5&oq=http+website&gs_lp=Egxnd3Mtd2l6LXNlcnAiDGh0dHAgd2Vic2l0ZTIKEAAYgAQYQxiKBTIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgUQABiABDIIEAAYgAQYywFIjwVQ7AJY7AJwAXgBkAEAmAGhAaABoQGqAQMwLjG4AQPIAQD4AQGYAgKgAqcBwgIKEAAYsAMY1gQYR5gDAIgGAZAGCJIHAzEuMaAHuAWyBwMwLjG4B6QBwgcDMC4yyAcE&sclient=gws-wiz-serp,benign
 2025-07-31T22:32:44.878Z,http://httpforever.com/,benign
+2025-07-31T22:36:49.360Z,https://example.com/,benign
+2025-07-31T22:36:53.800Z,https://example.com/,benign
+2025-07-31T22:37:02.660Z,https://www.alahli.com/en/pages/personal-banking,benign
+2025-07-31T22:37:06.902Z,https://www.alahli.com/en/pages/personal-banking,benign
+2025-07-31T22:37:12.050Z,https://www.alahli.com/en/pages/personal-banking,benign
+2025-07-31T22:37:28.209Z,https://www.alrajhibank.com.sa/en,benign
+2025-07-31T22:37:40.471Z,https://www.alrajhibank.com.sa/en,benign
+2025-07-31T22:37:44.270Z,https://www.alrajhibank.com.sa/en,benign
+2025-07-31T22:38:06.285Z,https://info.cern.ch/,benign
+2025-07-31T22:39:17.468Z,https://www.alrajhibank.com.sa/en,benign
+2025-07-31T22:40:18.180Z,https://github.com/,benign
+2025-07-31T22:40:23.427Z,https://github.com/khouzamaBinj/Amad-Hackathon,benign

@@ -59,6 +59,15 @@ const trustedDomains = [
   "bsf.com.sa"
 ];
 
+function isTrusted(url) {
+  try {
+    const hostname = new URL(url).hostname;
+    return trustedDomains.some(domain => hostname.endsWith(domain));
+  } catch {
+    return false;
+  }
+}
+
 function domainLooksSuspicious(domain) {
   return legitDomains.some(legit => {
     const distance = levenshteinDistance(domain, legit);

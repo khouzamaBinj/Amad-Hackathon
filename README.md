@@ -1,18 +1,50 @@
 # 🍯 HoneyWall
 # 🛡️ Saudi PhishGuard
 
-**HoneyWall** is a Chrome Extension designed to detect and report phishing websites, with a focus on targeting Saudi fintech platforms. It combines real-time browser-based phishing detection with a backend threat intelligence system inspired by Honeynet's Honeywall.
+**HoneyWall** is a Chrome Extension designed to detect phishing websites, with a focus on targeting Saudi fintech platforms. It combines real-time browser-based phishing detection with a backend threat intelligence system inspired by Honeynet's Honeywall.
 
 ---
 
-## 🚀 Features
+##  🚀  Key Features
+🧠 Real-Time Phishing Detection
+Automatically analyzes websites as you visit them, detecting phishing behavior instantly.
 
-- 🧠 **Real-time phishing detection** on page load
-- 🔍 URL analysis using heuristics (keywords, typosquatting, etc.)
-- 🧬 Integration with external threat intelligence sources
-- 📡 Reporting and logging phishing attempts to a Flask-based API
-- 🌐 Local threat mapping with support for Saudi banks and fintech services
-- 🔬 Future Support: Phishing sandbox and AI-based analysis
+🔍 Heuristic-Based URL Analysis
+Evaluates URLs using static features such as:
+
+Use of IP addresses
+
+Suspicious keywords
+
+HTTPS presence
+
+Length and entropy
+
+🤖 ML-Powered Risk Scoring
+Extracted features are sent to a Flask backend with a trained ML model to determine phishing likelihood.
+
+📡 Backend Logging for Threat Intelligence
+Every detection (auto or manual) is logged via API into structured .csv files, enabling data-driven insights for FinTech institutions.
+
+🌐 Local Threat Mapping for Saudi FinTech
+Tailored to detect phishing attempts targeting major Saudi banking and financial services.
+
+🧱 Modular Architecture
+Clean separation between Chrome extension (frontend) and Python backend (Flask), allowing future integration of:
+
+WHOIS caching
+
+External threat feeds
+
+AI behavioral analysis
+
+🧪 Future Plans:
+
+Phishing sandbox environment for safe testing and interaction logging
+
+Deeper AI-based behavioral detection beyond URL patterns
+
+Integration with banking SOC dashboards or APIs
 
 ---
 ## 🧪 How it Works
@@ -39,9 +71,10 @@ Amad-Hackathon/
 │   │      ├── dataset.csv
 │   │      ├── features.py
 │   │      ├── generate_dataset.py
-│   │      ├── generate_synthetic_banking_urls.py
+│   │      ├── generate_whois_cache.py
 │   │      ├── phishing_model.pkl
 │   │      ├── train_model.py
+│   │      └── whois_cache.csv
 │   ├── app.py
 │   ├── payload.json          ← sample JSON for curl testing
 │   ├── requirements.txt     

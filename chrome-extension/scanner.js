@@ -1,47 +1,53 @@
 // ────────────────────────────────────────────────────────────
-// HoneyWall – lightweight content-script
-// Sends the current tab’s URL (plus a few client-side signals)
-// to your Flask backend and logs the verdict.
+// Saudi PhishGuard – scanner.js
+// Injected by content_script into every HTTP(S) page.
+// Collects basic phishing signals and POSTs them to backend.
 //
-// 1. Injected on *every* http(s) page via manifest.json
-// 2. Waits ~1 s so the DOM can finish building
-// 3. Detects common risk clues (password fields, iframes, etc.)
-// 4. POSTs to /ml_score  →  receives {verdict, score}
-// 5. POSTs a copy to /log for your dashboard
+// 1. Waits for DOM to load (~1s delay)
+// 2. Collects basic heuristics (e.g., password field, iframe)
+// 3. Sends to /ml_score → gets {verdict, score}
+// 4. Logs result to /log
+// 5. Sends message to popup.js (if open)
 // ────────────────────────────────────────────────────────────
 
-console.log("🔍 HoneyWall scanner active");
+console.log("HoneyWall test script loaded");
 
 function collectSignals() {
-  // a) Is there at least one <input type="password"> on the page?
-  const passwordFieldDetected = !!document.querySelector("input[type='password']");
+  const url = window.location.href;
+  const domain = new URL(url).hostname;
 
-  // b) Does the page embed remote content via <iframe>?
+  const passwordFieldDetected = !!document.querySelector("input[type='password']");
   const iframeCount = document.querySelectorAll("iframe").length;
 
-  // c) Basic heuristic: long URL or a lot of dots
-  const url = window.location.href;
   return {
     url,
-    password_field_detected: passwordFieldDetected ? 1 : 0,
-    iframe_count: iframeCount,
+    contains_https: url.startsWith("https://") ? 1 : 0,
+    has_ip: /^\d{1,3}(?:\.\d{1,3}){3}$/.test(domain) ? 1 : 0,
+    has_suspicious_words: /(login|verify|bank|secure|update|signin|confirm)/i.test(url) ? 1 : 0,
     url_length: url.length,
-    num_dots: (url.match(/\./g) || []).length
+    num_dots: (domain.match(/\./g) || []).length,
+    is_mobile_site: domain.startsWith("m.") || url.includes("/m/") ? 1 : 0,
+    password_field_detected: passwordFieldDetected ? 1 : 0,
+    // These 3 will be handled server-side in extract_features()
+    domain_age: 0,
+    ip_mismatch: 0,
+    trusted_tld: 0,
+    iframe_count: iframeCount
   };
 }
 
 async function sendToBackend(signals) {
   try {
-    // ── 1. Ask ML model
-    const res = await fetch("http://127.0.0.1:5000/ml_score", {
+    const mlRes = await fetch("http://127.0.0.1:5000/ml_score", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(signals)
     });
-    const { verdict, score } = await res.json();
-    console.log(`🛡️ HoneyWall verdict: ${verdict} (${score})`);
 
-    // ── 2. Log the result (non-blocking)
+    const { verdict, score } = await mlRes.json();
+    console.log(`🛡️ Verdict: ${verdict} (${score})`);
+
+    // Log to backend
     fetch("http://127.0.0.1:5000/log", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -51,12 +57,18 @@ async function sendToBackend(signals) {
         score,
         timestamp: new Date().toISOString()
       })
-    }).catch(() => { /* silent */ });
+    }).catch(() => {});
+
+    // Send message to popup (optional visual update)
+    chrome.runtime.sendMessage({ verdict, score });
 
   } catch (err) {
-    console.error("❌ HoneyWall backend error:", err);
+    console.error("❌ Backend communication failed:", err);
   }
 }
 
-// Kick off after a brief delay so the DOM is mostly ready
-setTimeout(() => sendToBackend(collectSignals()), 1000);
+// Wait 1 second for DOM to stabilize, then scan
+setTimeout(() => {
+  const signals = collectSignals();
+  sendToBackend(signals);
+}, 1000);

@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
 
           if (data.verdict === "phishing") {
-            resultDiv.textContent = `❌ Risky site detected (Confidence: ${((1-data.score) * 100).toFixed(1)}%)`;
+            resultDiv.textContent = `❌ Risky site detected (Confidence: ${(data.score * 100).toFixed(1)}%)`;
             resultDiv.style.color = "red";
           } else {
             resultDiv.textContent = `✅ Site is safe (Confidence: ${((1-data.score) * 100).toFixed(1)}%)`;

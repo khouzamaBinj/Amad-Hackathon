@@ -1,33 +1,41 @@
 import pandas as pd
 import joblib
-from features import extract_features
+import os
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-import os
+from tqdm import tqdm
+from features import extract_features
 
-print("🔍 Extracting features...")
+# ✅ Enable tqdm for progress tracking
+tqdm.pandas()
 
-# Load dataset
+# ✅ Load dataset
 script_dir = os.path.dirname(__file__)
 dataset_path = os.path.join(script_dir, "dataset.csv")
 df = pd.read_csv(dataset_path)
 
-# Extract only numeric features
-features_df = df["url"].apply(extract_features).apply(pd.Series)
+# ✅ Extract features
+features_df = df["url"].progress_apply(extract_features).apply(pd.Series)
 
-# Convert bools to integers
+# ✅ Convert booleans to integers
 features_df = features_df.astype(int)
 
 X = features_df
 y = df["label"]
 
-print("🤖 Training model...")
+# ✅ Train/test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# ✅ Train the model
+print("🤖 Training model...")
 model = RandomForestClassifier()
 model.fit(X_train, y_train)
 
+# ✅ Evaluate accuracy
 accuracy = model.score(X_test, y_test)
 print("✅ Model trained. Accuracy:", accuracy)
 
-joblib.dump((model, list(X.columns)), os.path.join(script_dir, "phishing_model.pkl"))
-print("✅ phishing_model.pkl saved")
+# ✅ Save model
+model_path = os.path.join(script_dir, "phishing_model.pkl")
+joblib.dump((model, list(X.columns)), model_path)
+print("✅ phishing_model.pkl saved with trusted_tld feature!")

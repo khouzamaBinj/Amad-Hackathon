@@ -3,36 +3,27 @@ console.log("🔍 Phishing scanner activated");
 // Helper to extract features from the current page
 function extractPageFeatures() {
   const url = window.location.href;
-  const hasHttps = url.startsWith("https://");
-  const hasIP = !!url.match(/\b(?:\d{1,3}\.){3}\d{1,3}\b/);
-  const hasSuspiciousWords = /(login|secure|update|verify|account|webscr|signin)/i.test(url);
-  const isMobile = /m\.|\/m\//i.test(url);
-  const length = url.length;
-  const numDots = (url.match(/\./g) || []).length;
-  const passwordDetected = !!document.querySelector('input[type="password"]');
-
-  const parsed = new URL(url);
-  const domain = parsed.hostname;
-  const path = parsed.pathname;
 
   return {
-    url,
-    domain,
-    path,
-    contains_https: hasHttps,
-    has_ip: hasIP,
-    has_suspicious_words: hasSuspiciousWords,
-    is_mobile_site: isMobile,
-    length,
-    num_dots: numDots,
-    password_field_detected: passwordDetected,
-    timestamp: new Date().toISOString()
+    url: url,
+    timestamp: new Date().toISOString(),
+    contains_https: url.startsWith("https://") ? 1 : 0,
+    has_ip: /\b(?:\d{1,3}\.){3}\d{1,3}\b/.test(url) ? 1 : 0,
+    has_suspicious_words: /(login|secure|update|verify|account|webscr|signin)/i.test(url) ? 1 : 0,
+    url_length: url.length || 0,
+    num_dots: (url.match(/\./g) || []).length,
+    is_mobile_site: /m\.|\/m\//i.test(url) ? 1 : 0,
+    password_field_detected: document.querySelector('input[type="password"]') ? 1 : 0,
+    domain_age: 7,        // default fallback
+    ip_mismatch: 1        // default fallback
   };
 }
 
 // Send features to the ML backend
 async function analyzePage() {
   const features = extractPageFeatures();
+
+  console.log("🧪 Features being sent:", features);
 
   try {
     const response = await fetch("http://127.0.0.1:5000/ml_score", {
@@ -50,7 +41,7 @@ async function analyzePage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         url: features.url,
-        indicator: result.verdict,
+        indicator: result.verdict || "unknown",
         timestamp: features.timestamp
       })
     });
@@ -60,5 +51,5 @@ async function analyzePage() {
   }
 }
 
-// Wait a bit for page content to load, then analyze
+// Wait for the page to load, then analyze
 setTimeout(analyzePage, 1000);

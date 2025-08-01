@@ -1,41 +1,46 @@
-import pandas as pd
-import joblib
+"""
+Retrain RandomForest with the updated feature extractor.
+Run from inside backend/ai_model:  python train_model.py
+"""
+
 import os
+import joblib, pandas as pd
+from tqdm import tqdm
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from tqdm import tqdm
-from features import extract_features
+from sklearn.metrics import classification_report
 
-# ✅ Enable tqdm for progress tracking
+from features import extract_features   # local import
+
 tqdm.pandas()
 
-# ✅ Load dataset
-script_dir = os.path.dirname(__file__)
-dataset_path = os.path.join(script_dir, "dataset.csv")
-df = pd.read_csv(dataset_path)
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATASET = os.path.join(SCRIPT_DIR, "dataset.csv")
+MODEL_OUT  = os.path.join(SCRIPT_DIR, "phishing_model.pkl")
 
-# ✅ Extract features
-features_df = df["url"].progress_apply(extract_features).apply(pd.Series)
+# -----------------------------------------------------------------
+print(f"📑  Loading dataset: {DATASET}")
+df = pd.read_csv(DATASET)        # must contain 'url' & 'label' columns
 
-# ✅ Convert booleans to integers
-features_df = features_df.astype(int)
+# Feature-engineering
+print("🔬  Extracting features (this takes a moment on first run)…")
+X = df["url"].progress_apply(extract_features).apply(pd.Series)
+y = df["label"].astype(int)
 
-X = features_df
-y = df["label"]
+# Train / test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.20, random_state=42, stratify=y)
 
-# ✅ Train/test split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+# Model training
+clf = RandomForestClassifier(
+    n_estimators=300, max_depth=None,
+    class_weight="balanced", random_state=42)
+clf.fit(X_train, y_train)
 
-# ✅ Train the model
-print("🤖 Training model...")
-model = RandomForestClassifier()
-model.fit(X_train, y_train)
+# Evaluation
+print("\n✅  Test-set performance:")
+print(classification_report(y_test, clf.predict(X_test)))
 
-# ✅ Evaluate accuracy
-accuracy = model.score(X_test, y_test)
-print("✅ Model trained. Accuracy:", accuracy)
-
-# ✅ Save model
-model_path = os.path.join(script_dir, "phishing_model.pkl")
-joblib.dump((model, list(X.columns)), model_path)
-print("✅ phishing_model.pkl saved with trusted_tld feature!")
+# Persist
+joblib.dump((clf, list(X.columns)), MODEL_OUT)
+print(f"\n💾  Model saved →  {MODEL_OUT}")

@@ -142,3 +142,11 @@ timestamp,url,indicator
 2025-08-01T14:39:51.811Z,https://savingpro.top/host,phishing
 2025-08-01T14:40:28.642Z,https://www.google.com/search?q=urpay&rlz=1C1ONGR_enUS1087US1087&oq=urpay&gs_lcrp=EgZjaHJvbWUyDAgAEEUYORixAxiABDIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDEwODRqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8,phishing
 2025-08-01T14:40:31.075Z,https://www.urpay.com.sa/,benign
+2025-08-01T14:45:57.781Z,https://www.google.com/search?q=snb+alahli&rlz=1C1ONGR_enUS1087US1087&oq=snb&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIQCAEQLhjHARixAxjRAxiABDIGCAIQRRhAMhAIAxAAGJECGLEDGIAEGIoFMhAIBBAAGJECGLEDGIAEGIoFMgoIBRAAGLEDGIAEMgcIBhAAGIAEMg0IBxAAGIMBGLEDGIAE0gEIMTA3OWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8,phishing
+2025-08-01T14:46:01.672Z,https://www.alahli.com/en/pages/personal-banking,benign
+2025-08-01T14:46:08.751Z,https://www.alrajhibank.com.sa/en/Business/Tutorial-videos,benign
+2025-08-01T14:46:22.678Z,https://www.urpay.com.sa/,benign
+2025-08-01T15:45:12.322Z,https://example.com/,phishing
+2025-08-01T15:45:22.452Z,https://www.alrajhibank.com.sa/en/Business/Tutorial-videos,benign
+2025-08-01T15:45:31.025Z,https://www.google.com/search?q=chatgpt&rlz=1C1ONGR_enUS1087US1087&oq=chat&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYOzIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQc0NDlqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8,phishing
+2025-08-01T15:45:34.879Z,https://chatgpt.com/?utm_source=google&utm_medium=paidsearch_brand&utm_campaign=GOOG_C_SEM_GBR_Core_CHT_BAU_ACQ_PER_MIX_ALL_EMEA_SA_EN_032425&utm_term=chatgpt&utm_content=177165754739&utm_ad=744841656204&utm_match=e&gad_source=1&gad_campaignid=22366737093&gbraid=0AAAAA-IW-UVSPA5PTIYjOjrQjkK1UvKIe&gclid=CjwKCAjwy7HEBhBJEiwA5hQNopE5nzVGiO8c0FDYCjJJ0p0MzCbxmt4oYOz48bcwjOJCd-272vBdjBoCH7IQAvD_BwE,phishing

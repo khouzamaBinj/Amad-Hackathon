@@ -8,12 +8,12 @@
 ## 🚀 Features
 HoneyWall is a Chrome Extension + Flask Backend system designed to protect users and fintech institutions from phishing attacks, with a special focus on the Saudi ecosystem.
 
-# 🧠 Real-Time Phishing Detection
+- 🧠 Real-Time Phishing Detection
 Automatically scans websites on page load.
 
 Flags potential phishing attempts before users interact with malicious content.
 
-# 🔍 Heuristic-Based URL Analysis
+- 🔍 Heuristic-Based URL Analysis
 Extracts and analyzes static features from URLs:
 
 Presence of HTTPS
@@ -24,19 +24,19 @@ Suspicious keywords
 
 URL length, entropy, and character anomalies
 
-# 🤖 Machine Learning Risk Scoring
+- 🤖 Machine Learning Risk Scoring
 Backend Flask API receives extracted features.
 
 Predicts phishing risk using a trained ML model (phishing_model.pkl).
 
 Returns verdict (phishing / benign) with confidence score.
 
-# 📡 Threat Logging for Analysis
+- 📡 Threat Logging for Analysis
 Every scan result is logged into logs.csv on the server.
 
 Enables future threat intelligence and detection trend analysis.
 
-# 🌐 Local FinTech Target Awareness
+- 🌐 Local FinTech Target Awareness
 Custom rules and ML features tailored for phishing targeting:
 
 Saudi banks
@@ -45,7 +45,7 @@ E-wallets
 
 Fintech platforms
 
-# 🧱 Modular Architecture
+- 🧱 Modular Architecture
 Frontend: Chrome Extension (popup.html, scanner.js, etc.)
 
 Backend: Flask API (/ml_score, /log)
@@ -58,7 +58,7 @@ Domain reputation APIs
 
 Threat intelligence feeds
 
-# 🔬 Future Enhancements
+- 🔬 Future Enhancements
 ✅ Phishing sandbox environment for dynamic interaction logging
 
 ✅ AI-based behavioral analysis of page content and interaction patterns

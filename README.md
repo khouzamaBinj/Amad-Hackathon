@@ -34,9 +34,17 @@
 
 ```bash
 Amad-Hackathon/
-├── backend/             # Flask backend server (logging phishing data)
+├── backend/       # Flask backend server 
+│   ├── ai_model/
+│   │      ├── dataset.csv
+│   │      ├── features.py
+│   │      ├── generate_dataset.py
+│   │      ├── generate_synthetic_banking_urls.py
+│   │      ├── phishing_model.pkl
+│   │      ├── train_model.py
 │   ├── app.py
-│   ├── payload.json      ← sample JSON for curl testing
+│   ├── payload.json          ← sample JSON for curl testing
+│   ├── requirements.txt     
 │   └── log.csv
 ├── chrome-extension/    # Chrome extension for phishing detection
 │   ├── manifest.json

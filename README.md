@@ -60,7 +60,7 @@ Threat intelligence feeds
 
 - 🔬 Future Enhancements
 
-- - ✅ Phishing sandbox environment for dynamic interaction logging
+ ✅ Phishing sandbox environment for dynamic interaction logging
 
 ✅ AI-based behavioral analysis of page content and interaction patterns
 

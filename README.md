@@ -1,18 +1,70 @@
 # 🍯 HoneyWall
 # 🛡️ Saudi PhishGuard
 
-**HoneyWall** is a Chrome Extension designed to detect and report phishing websites, with a focus on targeting Saudi fintech platforms. It combines real-time browser-based phishing detection with a backend threat intelligence system inspired by Honeynet's Honeywall.
+**HoneyWall** is a Chrome Extension designed to detect phishing websites, with a focus on targeting Saudi fintech platforms. It combines real-time browser-based phishing detection with a backend threat intelligence system inspired by Honeynet's Honeywall.
 
 ---
 
 ## 🚀 Features
+HoneyWall is a Chrome Extension + Flask Backend system designed to protect users and fintech institutions from phishing attacks, with a special focus on the Saudi ecosystem.
 
-- 🧠 **Real-time phishing detection** on page load
-- 🔍 URL analysis using heuristics (keywords, typosquatting, etc.)
-- 🧬 Integration with external threat intelligence sources
-- 📡 Reporting and logging phishing attempts to a Flask-based API
-- 🌐 Local threat mapping with support for Saudi banks and fintech services
-- 🔬 Future Support: Phishing sandbox and AI-based analysis
+- 🧠 Real-Time Phishing Detection
+Automatically scans websites on page load.
+
+Flags potential phishing attempts before users interact with malicious content.
+
+- 🔍 Heuristic-Based URL Analysis
+Extracts and analyzes static features from URLs:
+
+Presence of HTTPS
+
+IP addresses in domain
+
+Suspicious keywords
+
+URL length, entropy, and character anomalies
+
+- 🤖 Machine Learning Risk Scoring
+Backend Flask API receives extracted features.
+
+Predicts phishing risk using a trained ML model (phishing_model.pkl).
+
+Returns verdict (phishing / benign) with confidence score.
+
+- 📡 Threat Logging for Analysis
+Every scan result is logged into logs.csv on the server.
+
+Enables future threat intelligence and detection trend analysis.
+
+- 🌐 Local FinTech Target Awareness
+Custom rules and ML features tailored for phishing targeting:
+
+Saudi banks
+
+E-wallets
+
+Fintech platforms
+
+- 🧱 Modular Architecture
+Frontend: Chrome Extension (popup.html, scanner.js, etc.)
+
+Backend: Flask API (/ml_score, /log)
+
+Easily extendable with:
+
+WHOIS enrichment
+
+Domain reputation APIs
+
+Threat intelligence feeds
+
+- 🔬 Future Enhancements
+
+ ✅ Phishing sandbox environment for dynamic interaction logging
+
+✅ AI-based behavioral analysis of page content and interaction patterns
+
+✅ Dashboard for banks and SOC teams for real-time alerts and insights
 
 ---
 ## 🧪 How it Works
@@ -39,9 +91,10 @@ Amad-Hackathon/
 │   │      ├── dataset.csv
 │   │      ├── features.py
 │   │      ├── generate_dataset.py
-│   │      ├── generate_synthetic_banking_urls.py
+│   │      ├── generate_whois_cache.py
 │   │      ├── phishing_model.pkl
 │   │      ├── train_model.py
+│   │      └── whois_cache.csv
 │   ├── app.py
 │   ├── payload.json          ← sample JSON for curl testing
 │   ├── requirements.txt     

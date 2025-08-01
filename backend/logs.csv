@@ -20,3 +20,22 @@ timestamp,url,method,page_title,browser_id,category
 2025-07-31T16:37:23.139Z,https://www.alrajhibank.com.sa/en,ML verdict: phishing (score: 1.0)
 2025-07-31T16:46:14.878Z,https://www.alrajhibank.com.sa/en,ML verdict: phishing (score: 1.0)
 2025-07-31T16:47:16.038Z,https://www.alrajhibank.com.sa/en,ML verdict: phishing (score: 1.0)
+2025-08-01T16:34:43,https://example.com/,benign,0.15
+2025-08-01T16:34:43.733Z,https://example.com/,benign,0.15
+2025-08-01T16:35:06.696Z,https://www.alrajhibank.com.sa/en/Business/Tutorial-videos,benign,0
+2025-08-01T16:35:21,https://www.urpay.com.sa/,benign,0.24
+2025-08-01T16:35:21.719Z,https://www.urpay.com.sa/,benign,0.24
+2025-08-01T16:35:24,https://www.google.com/search?q=urpay&rlz=1C1ONGR_enUS1087US1087&oq=urpay&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIGCAEQRRhAMgcIAhAAGIAEMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMgcIBhAAGIAEMgYIBxBFGDzSAQgxMjU4ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8,phishing,0.73
+2025-08-01T16:35:48,https://www.google.com/search?q=phishing+websites+for+testing&rlz=1C1ONGR_enUS1087US1087&oq=phishing+websites+for+testing&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg80gEINTUxNWowajSoAgCwAgE&sourceid=chrome&ie=UTF-8,phishing,0.73
+2025-08-01T16:35:48.073Z,https://www.google.com/search?q=phishing+websites+for+testing&rlz=1C1ONGR_enUS1087US1087&oq=phishing+websites+for+testing&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg80gEINTUxNWowajSoAgCwAgE&sourceid=chrome&ie=UTF-8,phishing,0.73
+2025-08-01T16:36:00,https://securityquotient.io/fully-managed-phishing-tests?gad_source=1&gad_campaignid=22396108259&gbraid=0AAAAAC-KP96BXt-woDHocg4G4r3fK6miz&gclid=CjwKCAjwy7HEBhBJEiwA5hQNolM4AXj9FbVH_X8-s_1VUjEyVXRZyzg_mdNmMiGDBMtgPYok0PqnTRoCOxEQAvD_BwE,phishing,0.90
+2025-08-01T16:36:06,https://www.google.com/search?q=phishing+linkesfor+testing&sca_esv=3d1e29cf7e253e0e&rlz=1C1ONGR_enUS1087US1087&sxsrf=AE3TifOpIMXUNNah7jBDb96JN9y-BiR9hw%3A1754066145934&ei=4eyMaK_jOKn4i-gPguSXuAQ&ved=0ahUKEwjv16nMheqOAxUp_AIHHQLyBUcQ4dUDCBA&uact=5&oq=phishing+linkesfor+testing&gs_lp=Egxnd3Mtd2l6LXNlcnAiGnBoaXNoaW5nIGxpbmtlc2ZvciB0ZXN0aW5nMgcQIxiwAhgnMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMggQABiABBiiBEjLGVDZEVjsFnACeACQAQCYAfACoAHBC6oBBzAuNC4yLjG4AQPIAQD4AQGYAgSgAokDwgIKEAAYsAMY1gQYR8ICBxAAGIAEGA2YAwCIBgGQBgiSBwUyLjEuMaAHkSKyBwUwLjEuMbgHgQPCBwMwLjTIBwg&sclient=gws-wiz-serp,phishing,0.73
+2025-08-01T16:36:06.700Z,https://www.google.com/search?q=phishing+linkesfor+testing&sca_esv=3d1e29cf7e253e0e&rlz=1C1ONGR_enUS1087US1087&sxsrf=AE3TifOpIMXUNNah7jBDb96JN9y-BiR9hw%3A1754066145934&ei=4eyMaK_jOKn4i-gPguSXuAQ&ved=0ahUKEwjv16nMheqOAxUp_AIHHQLyBUcQ4dUDCBA&uact=5&oq=phishing+linkesfor+testing&gs_lp=Egxnd3Mtd2l6LXNlcnAiGnBoaXNoaW5nIGxpbmtlc2ZvciB0ZXN0aW5nMgcQIxiwAhgnMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMggQABiABBiiBEjLGVDZEVjsFnACeACQAQCYAfACoAHBC6oBBzAuNC4yLjG4AQPIAQD4AQGYAgSgAokDwgIKEAAYsAMY1gQYR8ICBxAAGIAEGA2YAwCIBgGQBgiSBwUyLjEuMaAHkSKyBwUwLjEuMbgHgQPCBwMwLjTIBwg&sclient=gws-wiz-serp,phishing,0.73
+2025-08-01T16:36:25,https://www.google.com/search?q=reporting+possiblae+phsihing+website+tool&rlz=1C1ONGR_enUS1087US1087&oq=reporting+possiblae+phsihing+website+tool&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQIRgKGKABMgkIAhAhGAoYoAEyBwgDECEYjwIyBwgEECEYjwLSAQg3MTk3ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8,phishing,0.73
+2025-08-01T16:36:25.070Z,https://www.google.com/search?q=reporting+possiblae+phsihing+website+tool&rlz=1C1ONGR_enUS1087US1087&oq=reporting+possiblae+phsihing+website+tool&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQIRgKGKABMgkIAhAhGAoYoAEyBwgDECEYjwIyBwgEECEYjwLSAQg3MTk3ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8,phishing,0.73
+2025-08-01T16:36:31,https://phishtank.org/,benign,0.56
+2025-08-01T16:36:31.556Z,https://phishtank.org/,benign,0.56
+2025-08-01T16:36:31,https://www.kaggle.com/datasets/taruntiwarihp/phishing-site-urls,phishing,0.90
+2025-08-01T16:36:31.661Z,https://www.kaggle.com/datasets/taruntiwarihp/phishing-site-urls,phishing,0.9
+2025-08-01T16:36:43,https://muse.io/att-management,phishing,0.90
+2025-08-01T16:36:43.659Z,https://muse.io/att-management,phishing,0.9

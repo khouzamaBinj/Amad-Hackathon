@@ -26,3 +26,8 @@ Thumbs.db
 
 # Streamlit cache (if using Streamlit)
 .streamlit/
+
+# Build artefacts
+*.pkl
+*.csv
+venv/

@@ -41,6 +41,37 @@ clf.fit(X_train, y_train)
 print("\n✅  Test-set performance:")
 print(classification_report(y_test, clf.predict(X_test)))
 
+
+print("\n✅  Test-set performance:")
+print(classification_report(y_test, clf.predict(X_test)))
+
+# ============= NEW: visual validation ==========
+from sklearn.metrics import ConfusionMatrixDisplay, RocCurveDisplay
+import matplotlib.pyplot as plt
+import os
+
+PLOTS_DIR = os.path.join(SCRIPT_DIR, "plots")
+os.makedirs(PLOTS_DIR, exist_ok=True)
+
+# Confusion Matrix
+ConfusionMatrixDisplay.from_estimator(clf, X_test, y_test)
+plt.title("Test-set Confusion Matrix")
+plt.tight_layout()
+cm_path = os.path.join(PLOTS_DIR, "confusion_matrix.png")
+plt.savefig(cm_path)
+plt.close()
+
+# ROC Curve
+RocCurveDisplay.from_estimator(clf, X_test, y_test)
+plt.title("ROC Curve")
+plt.tight_layout()
+roc_path = os.path.join(PLOTS_DIR, "roc_curve.png")
+plt.savefig(roc_path)
+plt.close()
+
+print(f"🖼️  Plots saved → {cm_path} / {roc_path}")
+
+# -----------------------------------------------
 # Persist
 joblib.dump((clf, list(X.columns)), MODEL_OUT)
 print(f"\n💾  Model saved →  {MODEL_OUT}")
